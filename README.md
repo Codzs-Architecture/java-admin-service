@@ -65,7 +65,7 @@ Make sure you have the following installed:
     ```
     -Dspring.profiles.active=local
     
-    spring.profiles.active=local; config.password=password; config.server.url=https://local.codzs.com:5002; server.ssl.keystore=./../java-codzs-resource/local/local.codzs.com.p12; server.ssl.password=localpassword
+    config.password=password; config.server.url=https://local.codzs.com:5002; server.ssl.keystore=./../java-codzs-resource/local/local.codzs.com.p12; server.ssl.password=localpassword
     ```
 
 ## Usage

@@ -5,7 +5,7 @@ spring:
   security:
     user:
       name: admin-service-user
-      password: password
+      password: ${admin.password}
       roles: MANAGEMENT_ADMIN
 
   profiles:
