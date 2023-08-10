@@ -71,6 +71,10 @@
             <optional>true</optional>
         </dependency>
         -->
+		<dependency>
+			<groupId>com.codzs</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
