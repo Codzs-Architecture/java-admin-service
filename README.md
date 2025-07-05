@@ -48,24 +48,21 @@ Make sure you have the following installed:
     ```
 6.  Run the Config Server:
     ```
-    java -jar target/java-config-service.jar 
-    -Dspring.profiles.active=local
-    -Dconfig.password=password
-    -Dconfig.server.url=https://local.codzs.com:5002
-    -Dserver.ssl.keystore=./../java-codzs-resource/local/local.codzs.com.p12
-    -Dserver.ssl.password=localpassword
+    java -Dspring.profiles.active=local -Dconfig.password=password -Dconfig.server.url=https://local.codzs.com:5002 -Dserver.ssl.key-store=./../java-codzs-resource/local/local.codzs.com.p12 -Dserver.ssl.key-store-password=localpassword -Dserver.ssl.key-password=localpassword -Dadmin.password=admin123 -jar target/java-admin-service.jar
     ```
     * `spring.profiles.active`: current active profile as per the environment
     * `config.server.url`: Config server base URL
     * `config.password`: Config server password
-    * `server.ssl.keystore`: Path to the ssl key store file
-    * `server.ssl.password`: SSL Key store password
+    * `server.ssl.key-store`: Path to the ssl key store file
+    * `server.ssl.key-store-password`: SSL Key store password
+    * `server.ssl.key-password`: SSL Key password
+    * `admin.password`: Admin password
 
     To configure IDE, do the below entry in the environment variable in the IDE (and change the values as per your environment):
     ```
     -Dspring.profiles.active=local
     
-    config.password=password; config.server.url=https://local.codzs.com:5002; server.ssl.keystore=./../java-codzs-resource/local/local.codzs.com.p12; server.ssl.password=localpassword
+    config.password=password; config.server.url=https://local.codzs.com:5002; server.ssl.key-store=./../java-codzs-resource/local/local.codzs.com.p12; server.ssl.key-store-password=localpassword; server.ssl.key-password=localpassword; admin.password=admin123
     ```
 
 ## Usage
