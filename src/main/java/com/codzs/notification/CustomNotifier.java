@@ -13,7 +13,7 @@ import de.codecentric.boot.admin.server.notify.LoggingNotifier;
 
 public class CustomNotifier extends AbstractEventNotifier {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingNotifier.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoggingNotifier.class);
 
     public CustomNotifier(InstanceRepository repository) {
         super(repository);
@@ -23,11 +23,11 @@ public class CustomNotifier extends AbstractEventNotifier {
     protected Mono<Void> doNotify(InstanceEvent event, Instance instance) {
         return Mono.fromRunnable(() -> {
             if (event instanceof InstanceStatusChangedEvent) {
-                LOGGER.info("Instance {} ({}) is {}", instance.getRegistration().getName(), event.getInstance(),
+                logger.info("Instance {} ({}) is {}", instance.getRegistration().getName(), event.getInstance(),
                         ((InstanceStatusChangedEvent) event).getStatusInfo().getStatus());
             }
             else {
-                LOGGER.info("Instance {} ({}) {}", instance.getRegistration().getName(), event.getInstance(),
+                logger.info("Instance {} ({}) {}", instance.getRegistration().getName(), event.getInstance(),
                         event.getType());
             }
         });

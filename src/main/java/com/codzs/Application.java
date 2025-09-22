@@ -11,7 +11,7 @@ import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
 import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
 import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -29,15 +29,14 @@ import de.codecentric.boot.admin.server.web.client.HttpHeadersProvider;
 import de.codecentric.boot.admin.server.web.client.InstanceExchangeFilterFunction;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-@Configuration(proxyBeanMethods = false)
-@EnableAutoConfiguration
+@SpringBootApplication
 @EnableAdminServer
 @Import({ SecurityConfig.class, NotifierConfig.class })
 @EnableWebSecurity
 @Lazy(false)
 @EnableCaching
 public class Application {
-	private static final Logger log = LoggerFactory.getLogger(Application.class);
+	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(Application.class);
@@ -54,7 +53,7 @@ public class Application {
 	public InstanceExchangeFilterFunction auditLog() {
 		return (instance, request, next) -> next.exchange(request).doOnSubscribe((s) -> {
 			if (HttpMethod.DELETE.equals(request.method()) || HttpMethod.POST.equals(request.method())) {
-				log.info("{} for {} on {}", request.method(), instance.getId(), request.url());
+				logger.info("{} for {} on {}", request.method(), instance.getId(), request.url());
 			}
 		});
 	}
