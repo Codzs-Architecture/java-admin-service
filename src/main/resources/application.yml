@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: java-admin-service
+
+  security:
+    user:
+      name: admin-service-user
+      password: ${admin.password}
+      roles: MANAGEMENT_ADMIN
+
+  profiles:
+    include: 'keystore,config-service'
+
+# Entry to show this information on spring boot admin
+#info:
+#  app:
+#    encoding: @project.build.sourceEncoding@
+#    java:
+#      source: @java.version@
+#      target: @java.version@
+
+server:
+  port: 5001
